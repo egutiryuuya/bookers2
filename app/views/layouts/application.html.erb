@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <% if user_signed_in? %>
+      <!--ログインしているとき-->
+      <nav class="navbar navbar-dark bg-dark">
+       <a href="/">Bookers</a>
+      <ul class = "nav-tab">
+       <%=link_to"Home","/" %>
+       <%=link_to"Users",users_path %>
+       <%=link_to"Books",books_path %>
+       <%=link_to"Log out",destroy_user_session_path, method: :delete %>
+      </ul>
+      <!--ログインしてないとき-->
+      <% else %>
+      <nav class="navbar navbar-dark bg-dark">
+          <a href="/">Bookers</a>
+        <ul class="nav-tab">
+          <%=link_to root_path do %><i class="fa-solid fa-house-chimney"></i>Home <% end %>
+          <%=link_to about_path do %><i class="fa-solid fa-eject"></i>About<% end %>
+          <%=link_to new_user_registration_path do %><i class="fa-solid fa-user-plus"></i>Sign up <% end %>
+          <%=link_to user_session_path do %><i class="fa-solid fa-arrow-right-to-bracket"></i>Log in <% end %>
+        </ul>
+      </nav>
+      <% end %>
+    </header>
+    
+    
+    <footer class ="fixed-bottom">
+      <div class="container mt-5">
+      	<div class="row">
+        	<div class="mx-auto">
+        		<p>CopyRight Infratop.inc</p>
+        	</div>
+        </div>
+       </div>
+    </footer>
+    <%= yield %>
+  </body>
+</html

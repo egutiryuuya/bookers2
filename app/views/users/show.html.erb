@@ -1,0 +1,35 @@
+<div class= "container">
+  <div class="row">
+    <div class="col-4 mt-5">
+      <h1>User info</h1>
+      <h1><%= image_tag @user.get_image %></h1>
+      <table>
+        <tr>
+          <th></th>
+          <th>name</th><th><%=@user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th><th><%=@user.introduction %></th>
+        </tr>
+      </table>
+      <%=link_to edit_user_path(current_user.id), class: 'btn btn-outline-secondary btn-block mt-5' do %>
+      <i class="fa-solid fa-user-gear"></i>
+      <% end %> 
+      <!--ここから投稿欄-->
+      <h1 class="mt-3">New book</h1>
+      <%= form_with model: @book,url: books_path,method: :post do |f| %>
+      <h4>Title</h4>
+      <%= f.text_area :title %>
+      <h4>Opinition</h4>
+      <%= f.text_field :body %>
+      <%= f.submit 'Create Book' %>
+      <% end %>
+      </div>
+    
+     <!--ここからログインユーザー投稿一覧 -->
+    <div class="col-8 mt-5">
+      
+    </div>
+  </div>
+</div>
+ 
