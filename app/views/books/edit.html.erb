@@ -1,10 +1,17 @@
-<div class ="book-edit">
-          <p>7</p>
-        <p>6</p>
-        <p>5</p>
-        <p>4</p>
-        <p>3</p>
-        <p>2</p>
-        <p>1</p>
+<div class ="container">
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <h1>Editing Book</h1>
+      <%= form_with model: @book,url: book_path, method: :patch do |f| %>
+      <div class="form_group">
+      <lavel for="book_title">Title</lavel><br>
+      <%= f.text_field :title %><br>
+      <lavel for="book_body">Opinion</lavel><br>
+      <%= f.text_area :body %><br>
+      <%= f.submit "Update Book",class: "btn btn-secondary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
 </div>
