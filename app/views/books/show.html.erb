@@ -1,0 +1,15 @@
+<h1>Book detail</h1>
+<table class = "table table-hover table-inverse">
+  <tr>
+    <th><%=image_tag @user.get_image %><br>
+    <%= link_to @users.name,user_path(@users) %></th>
+    
+    <th><%= @book_new.title%></th>
+    <th><%= @book_new.body %></th>
+  <% if @book_new=current_user %>
+  
+  <th><%=link_to "Edit",edit_book_path(@book_new.id) %></th>
+  <th><%=link_to"Destroy",book_path(@book_new.id),method: :delete %></th>
+  <% end %>
+  </tr>
+</table>

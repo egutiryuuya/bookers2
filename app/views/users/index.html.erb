@@ -5,7 +5,23 @@
     <div class="col-4">
     </div>
     <!--ユーザー一覧-->
+    <% @users.each do |user| %>
     <div class="col-8">
+    <h1>Users</h1>
+      <table>
+        <thead>
+          <td>image</td>
+          <td>name</td>
+          <td></td>
+        </thead>
+        <tr>
+          <td><%= image_tag user.get_image %></td>
+          <td><%=user.name %></td>
+          <td><%=link_to "show",user_path(user.id)%></td>
+        </tr>
+      </table>
+      <% end %>
+      
       
     </div>
   </div>
