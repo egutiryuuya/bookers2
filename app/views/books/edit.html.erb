@@ -8,7 +8,9 @@
       <%= f.text_field :title %><br>
       <lavel for="book_body">Opinion</lavel><br>
       <%= f.text_area :body %><br>
-      <%= f.submit "Update Book",class: "btn btn-secondary" %>
+      <%= f.submit "Update Book",class: "btn btn-secondary mb-2" %><br>
+      <br>
+      <%= link_to "Show",book_path(@book.id) %>|<%= link_to "Back",books_path %>
       </div>
       <% end %>
     </div>

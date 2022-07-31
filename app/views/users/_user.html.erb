@@ -1,0 +1,13 @@
+<h1>User info</h1>
+    <h1><%= image_tag user.get_image %></h1>
+  <table>
+    <tr>
+    <th>name</th><th><%=user.name %></th>
+    </tr>
+    <tr>
+    <th>introduction</th><th><%=user.introduction %></th>
+    </tr>                            
+  </table>
+<%=link_to edit_user_path(current_user.id), class: 'btn btn-outline-secondary btn-block mt-5' do %>
+<i class="fa-solid fa-user-gear"></i>
+<% end %>

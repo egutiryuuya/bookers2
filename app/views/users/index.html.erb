@@ -1,8 +1,9 @@
 <!--ユーザー一覧ページ-->
 <div class="container">
   <div class="row">
-    <!--ログイン中ユーザー詳細-->
     <div class="col-4">
+      <%= render 'user',user: @user %>
+      <%= render '/books/book',book: @book %>
     </div>
     <!--ユーザー一覧-->
     <% @users.each do |user| %>
@@ -15,7 +16,7 @@
           <td></td>
         </thead>
         <tr>
-          <td><%= image_tag user.get_image %></td>
+          <td><%= image_tag user.get_image%></td>
           <td><%=user.name %></td>
           <td><%=link_to "show",user_path(user.id)%></td>
         </tr>
