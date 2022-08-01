@@ -6,24 +6,24 @@
       <%= render '/books/book',book: @book %>
     </div>
     <!--ユーザー一覧-->
-    <% @users.each do |user| %>
     <div class="col-8">
     <h1>Users</h1>
-      <table>
+      <table class="table table-hover table-inverse">
         <thead>
-          <td>image</td>
-          <td>name</td>
-          <td></td>
+          <th></th>
+          <th>image</th>
+          <th>name</th>
+          <th colspan="3"></th>
+          </tr>
         </thead>
+         <% @users.each do |user| %>
         <tr>
           <td><%= image_tag user.get_image%></td>
           <td><%=user.name %></td>
           <td><%=link_to "show",user_path(user.id)%></td>
+          <% end %>
         </tr>
       </table>
-      <% end %>
-      
-      
     </div>
   </div>
 </div>
