@@ -1,6 +1,14 @@
 <div class ="container">
   <div class="row">
     <div class="col-4 mx-auto">
+      <% if @book.errors.any? %>
+      <h3><%= @book.errors.count %>error prohibited this obj from being saved:</h3>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%=message%></li>
+    <% end %>
+      </ul>
+    <% end %>
       <h1>Editing Book</h1>
       <%= form_with model: @book,url: book_path, method: :patch do |f| %>
       <div class="form_group">

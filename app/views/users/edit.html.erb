@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
     <div class ="col-5 pt-5 mx-auto">
+      <% if @user.errors.any? %>
+      <%= @user.errors.count %>error prohibited this obj from being saved:
+      <% @user.errors.full_messages.each do |message| %>
+        <ul>
+        <li><%= message %></li>
+        <% end %>
+        </ul>
+      <% end %>
       <h1>User info</h1>
        <%= form_with model:@user, url:user_path(current_user.id),method: :patch do |f| %>
       <div class = "form-group">
