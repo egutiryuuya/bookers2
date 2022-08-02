@@ -12,7 +12,7 @@
             <%= link_to @users.name,user_path(@users) %></th>
           <th><%= @book_new.title%></th>
           <th><%= @book_new.body %></th>
-            <% if user_signed_in? && @book_new.user.id==current_user.id %>
+            <% if  @book_new.user.id==current_user.id %>
           <th><%=link_to "Edit",edit_book_path(@book_new.id) %></th>
           <th><%=link_to "Destroy",book_path(@book_new.id), method: :delete, data: { confirm: "削除しますか？" } %></th>
             <% else %>
