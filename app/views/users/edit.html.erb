@@ -1,29 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class ="col-5 pt-5 mx-auto">
+    <div class ="col-lg-3">
+    </div>
+      
+    <div class="col-lg-6">
       <% if @user.errors.any? %>
+      <div class="errors">
       <%= @user.errors.count %>error prohibited this obj from being saved:
-      <% @user.errors.full_messages.each do |message| %>
+        <% @user.errors.full_messages.each do |message| %>
+        </div>
         <ul>
-        <li><%= message %></li>
+          <li><%= message %></li>
         <% end %>
         </ul>
       <% end %>
+      
       <h1>User info</h1>
-       <%= form_with model:@user, url:user_path(current_user.id),method: :patch do |f| %>
-      <div class = "form-group">
-      <label for="inputName">Name</label><br>
-      <%=f.text_field :name %>
+        <%= form_with model: @user, local: true do |f| %>
+          <label for="inputName">Name</label></br>
+          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%><br>
+          <label for="inputImage">ProfileImage</label></br>
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></br>
+          <label for="introduction">introduction</label></br>
+          <%= f.text_area :introduction, autofocus: true, id:"introduction", placeholder:"自己紹介"%><br>
+          <%= f.submit "Update User", class: "btn btn-secondary" %>
+        <% end %>
       </div>
-      <label for="inputImage ">Image</label><br>
-      <%=f.file_field :profile_image %><br>
-      <label for="introduction">Introduction</label><br>
-      <%=f.text_area :introduction %><br>
-      
-      <%=f.submit "Update User",class: "btn btn-secondary my-3" %>
-      <% end %>
-      
-      
+      <div class="con-lg-3">
     </div>
   </div>
 </div>

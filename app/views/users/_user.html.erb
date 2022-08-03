@@ -2,19 +2,15 @@
     <h1><%= image_tag user.get_image %></h1>
   <table class="table">
     <tr>
-    <th>name</th><th><%=user.name %></th>
+      <th>name</th><th><%=user.name %></th>
     </tr>
+    
     <tr>
-    <th>introduction</th><th><%=user.introduction %></th>
+      <th>introduction</th><th><%=user.introduction %></th>
     </tr>                            
   </table>
-  <% if current_user.id==user.id%>
-    <%=link_to edit_user_path(current_user.id), class: 'btn btn-outline-secondary btn-block mt-5' do %>
-     <i class="fa-solid fa-user-gear"></i>
-    <% end %>
-  <%else%>
-    <%=link_to user_path(current_user.id), class: 'btn btn-outline-secondary btn-block mt-5' do %>
-    <i class="fa-solid fa-user-gear"></i>
-    <% end %>
-    
+  
+  <%=link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block mt-5' do %>
+   <i class="fas fa-user-cog"></i>
   <% end %>
+  

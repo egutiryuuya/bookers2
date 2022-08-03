@@ -3,63 +3,75 @@
   <head>
     <title>Bookers2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header class="navbar navbar-dark bg-dark navbar-inverse mb-5">
       <div class ="container">
-      <nav class="nav navbar navbar-dark navbar-left">
-       <h3><a class= "navbar-brand p-3" href="/">Bookers</a></h3>
-      </nav>
-      <ul class = "d-flex flex-row navbar-nav ml-auto">
-        <% if user_signed_in? %>
-       <li class="nav-item m-3">
-         <%=link_to user_path(current_user.id) do %>
-         <i class="fas fa-home nav-link text-light "></i><div class= "text-white">Home</div>
-         <% end %>
-       </li>
-       <li class="nav-item m-3">
-         <%=link_to users_path do %>
-          <i class="fas fa-users nav-link text-light"></i><div class="text-white">Users</div>
-          <% end %>
-       </li>
-       <li class="nav-item m-3">
-         <%=link_to books_path do %>
-         <i class="fas fa-book-open nav-link text-light"></i><div class = "text-white">Books</div>
-         <% end %>
-       </li>
-       <li class="nav-item m-3">
-         <%=link_to destroy_user_session_path, method: :delete do %>
-         <i class = "fas fa-sign-out-alt nav-link text-light"></i><div class="text-white">Log out</div>
-         <% end %>
-       </li>
-      <!--ログインしてないとき-->
-      <% else %>
+        <nav class="nav navbar-nav navbar-left">
+          <h3><a class= "navbar-brand p-3" href="/">Bookers</a></h3>
+        </nav>
+        <ul class = "d-flex flex-row navbar-nav ml-auto">
+            <% if user_signed_in? %>
+          <li class="nav-item m-3">
+            <%=link_to user_path(current_user.id) do %>
+              <i class="fas fa-home text-light"></i><span class= "text-white">Home</span>
+            <% end %>
+          </li>
+          <li class="nav-item m-3">
+            <%=link_to users_path do %>
+              <i class="fas fa-users text-light"></i><span class="text-white">Users</span>
+            <% end %>
+          </li>
+          <li class="nav-item m-3">
+            <%=link_to books_path do %>
+              <i class="fas fa-book-open text-light"></i><span class = "text-white">Books</span>
+            <% end %>
+          </li>
+          <li class="nav-item m-3">
+            <%=link_to destroy_user_session_path, method: :delete do %>
+              <i class = "fas fa-sign-out-alt text-light"></i><span class="text-white">Log out</span>
+            <% end %>
+          </li>
+          <!--ログインしてないとき-->
+          <% else %>
          
           <li class="nav-item m-3">
-            <%=link_to root_path do %><i class="fa-solid fa-house-chimney nav-link text-light"></i><div class="text-white">Home </div>
+            <%=link_to root_path do %>
+              <i class="fas fa-home text-light"></i><span class="text-white">Home</span>
             <% end %>
           </li>
           <li class="nav-item m-3">
-            <%=link_to about_path do %><i class="fa-solid fa-eject nav-link text-light"></i><div class="text-white">About</div>
+            <%=link_to about_path do %>
+              <i class="fas fa-link text-light"></i><span class="text-white">About</span>
             <% end %>
           </li>
           <li class="nav-item m-3">
-            <%=link_to new_user_registration_path do %><i class="fa-solid fa-user-plus nav-link text-light"></i><div class="text-white">Sign up</div> 
+            <%=link_to new_user_registration_path do %>
+              <i class="fas fa-user-plus text-light"></i><span class="text-white">Sign up</span> 
             <% end %>
           </li>
           <li class="nav-item m-3">
-            <%=link_to user_session_path do %><i class="fa-solid fa-arrow-right-to-bracket nav-link text-light"></i><div class="text-white">Log in</div>
+            <%=link_to user_session_path do %>
+              <i class="fas fa-sign-in-alt text-light"></i><span class="text-white">Log in</span>
             <% end %>
           </li>
+          <% end %>
         </ul>
-      <% end %>
+        </div>   
+      </div>
     </header>
+      <div class="text-gray">
+        <%= flash[:notice] %>
+      </div>
+      <div class="text-gray">
+        <%= flash[:alert] %>
+      </div>
     
     <%= yield %>
     <footer class = "mx-auto mt-5" style="width: 200px;">

@@ -6,22 +6,21 @@
     <ul>
       <% @book.errors.full_messages.each do |message| %>
         <li><%=message%></li>
-    <% end %>
-      </ul>
-    <% end %>
+      <% end %>
+    </ul>
+      <% end %>
+      
       <h1>Editing Book</h1>
-      <%= form_with model: @book,url: book_path, method: :patch do |f| %>
+        <%= form_with model: @book,url: book_path, method: :patch do |f| %>
       <div class="form_group">
-      <lavel for="book_title">Title</lavel><br>
-      <%= f.text_field :title %><br>
-      <lavel for="book_body">Opinion</lavel><br>
-      <%= f.text_area :body %><br>
-      <%= f.submit "Update Book",class: "btn btn-secondary mb-2" %><br>
-      <br>
-      <%= link_to "Show",book_path(@book.id) %>|<%= link_to "Back",books_path %>
-      </div>
+        <lavel for="book_title">Title</lavel><br>
+          <%= f.text_field :title %><br>
+        <lavel for="book_body">Opinion</lavel><br>
+          <%= f.text_area :body %><br>
+          <%= f.submit "Update Book",class: "btn btn-secondary mb-2" %><br>
+          <%= link_to "Show",book_path(@book.id) %>|<%= link_to "Back",books_path %>
+        </div>
       <% end %>
     </div>
   </div>
-
 </div>
