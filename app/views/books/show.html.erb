@@ -18,6 +18,20 @@
             <th><%=link_to "Destroy",book_path(@book.id), method: :delete, data: { confirm: "削除しますか？" },class: "btn btn-danger" %></th>
               <% else %>
               <% end %>
+              
+              <% if @book.favorited_by?(current_user) %>
+              
+            <th>
+              <%=link_to book_favorites_path(@book),method: :delete do %>
+                ♥<%= @book.favorites.count %> いいね
+              <% end %>
+            </th>
+              <% else %>
+            <th><%= link_to book_favorites_path(@book),method: :post do  %>
+              ♡<%=@book.favorites.count %> いいね
+              <% end %>
+            </th>
+              <% end %>
           </tr>
         </table>
     </div>

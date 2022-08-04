@@ -4,8 +4,6 @@ class BooksController < ApplicationController
     @book = Book.new
   end
   
-  
-    
   def index
     @books = Book.all
     @book = Book.new
