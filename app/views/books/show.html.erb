@@ -32,6 +32,17 @@
               <% end %>
             </th>
               <% end %>
+            <th>
+              コメント件数:<%=@book.bookcomments.count %>
+            </th>
+          </tr>
+          <tr>
+            <td colspan="5">
+              <%=form_with model: @bookcomments, method: :post do |f| %>
+              <%=f.text_area :comment,rows: '5' %>
+              <%=f.submit '送信'%>
+              <% end %>
+            </td>
           </tr>
         </table>
     </div>

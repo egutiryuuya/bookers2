@@ -13,6 +13,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user = @book.user
+    @book_comment=Bookcomment.new
     
   end
   
@@ -33,6 +34,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book), notice: "You have created book successfully."
     else
+      @user = current_user
       flash[:alert] = "error"
       render :index
     end
@@ -56,6 +58,7 @@ class BooksController < ApplicationController
   
   private
   def books_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title,:body)
   end
+  
 end

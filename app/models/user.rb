@@ -5,11 +5,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          has_many :books, dependent: :destroy
          has_many :favorites, dependent: :destroy
+         has_many :bookcomments,dependent: :destroy
   
   has_one_attached :profile_image
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 } 
   validates :introduction, length: {maximum: 50 }
-  
+  def self.guest
+    find_or_create_by!(name: "guestuser",email: "guest@gmail.com") do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
   
   def get_image
     unless profile_image.attached?
